@@ -9,8 +9,8 @@ By default, it shows ```ಠ_ಠ``` at the beginning of each line that is indente
 It can be configured by with the following variables (setting them to 0 disables the feature):
 
 ```
-let g:LookOfDisapprovalTabTreshold=4
-let g:LookOfDisapprovalSpaceTreshold=(&tabstop*4)
+let g:LookOfDisapprovalTabTreshold=5
+let g:LookOfDisapprovalSpaceTreshold=(&tabstop*5)
 ```
 
 ![Disapproval in action](https://github.com/dodie/vim-disapprove-deep-indentation/blob/master/screenshot.png "Disapproval")
