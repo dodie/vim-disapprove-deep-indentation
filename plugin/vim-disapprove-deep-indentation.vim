@@ -3,7 +3,7 @@
 " URL:                  https://github.com/dodie/vim-disapprove-deep-indentation
 " License:              MIT
 " ----------------------------------------------------------------------------
-function g:DisapproveDeepIndent()
+function! g:DisapproveDeepIndent()
     if !exists("g:LookOfDisapprovalSpaceTreshold") || (g:LookOfDisapprovalSpaceTreshold > 0 && g:LookOfDisapprovalSpaceTreshold < 4)
         let g:LookOfDisapprovalSpaceTreshold=(&tabstop*4)
     endif
