@@ -4,12 +4,12 @@
 " License:              MIT
 " ----------------------------------------------------------------------------
 function! g:DisapproveDeepIndent()
-    if !exists("g:LookOfDisapprovalSpaceTreshold") || (g:LookOfDisapprovalSpaceTreshold > 0 && g:LookOfDisapprovalSpaceTreshold < 4)
-        let g:LookOfDisapprovalSpaceTreshold=(&tabstop*4)
+    if !exists("g:LookOfDisapprovalSpaceTreshold") || (g:LookOfDisapprovalSpaceTreshold > 0 && g:LookOfDisapprovalSpaceTreshold < 5)
+        let g:LookOfDisapprovalSpaceTreshold=(&tabstop*5)
     endif
 
-    if !exists("g:LookOfDisapprovalTabTreshold") || (g:LookOfDisapprovalTabTreshold > 0 && g:LookOfDisapprovalTabTreshold < 4)
-        let g:LookOfDisapprovalTabTreshold=4
+    if !exists("g:LookOfDisapprovalTabTreshold") || (g:LookOfDisapprovalTabTreshold > 0 && g:LookOfDisapprovalTabTreshold < 5)
+        let g:LookOfDisapprovalTabTreshold=5
     endif
 
     syn match LookOfDisapprovalLeftEye contained '\%1c\s' conceal cchar=ಠ
