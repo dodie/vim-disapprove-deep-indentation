@@ -11,7 +11,7 @@ let g:LookOfDisapprovalTabTreshold=4
 let g:LookOfDisapprovalSpaceTreshold=(&tabstop*4)
 ```
 
-The plugin uses Vim's conceal feature, it does not modify the source code in any way, the disapproving
+The plugin uses Vim's conceal feature. It does not modify the source code in any way, the disapproving
 look is just a visual indicator.
 
 
