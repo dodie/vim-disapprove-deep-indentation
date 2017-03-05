@@ -3,7 +3,7 @@ vim-disapprove-deep-indentation
 
 This Vim plugin disapproves deeply indented code.
 
-By default, it shows *ಠ\_ಠ* at the beginning of each line that is indented at least 4 tabs deep.
+By default, it shows ```ಠ_ಠ``` at the beginning of each line that is indented at least 4 levels.
 It can be configured by with the following variables (setting them to 0 disables the feature):
 
 ```
@@ -11,7 +11,7 @@ let g:LookOfDisapprovalTabTreshold=4
 let g:LookOfDisapprovalSpaceTreshold=(&tabstop*4)
 ```
 
-The plugin uses Vim's conceal feature, it does not modify the source code in any way, the disapproving
+The plugin uses Vim's conceal feature. It does not modify the source code in any way, the disapproving
 look is just a visual indicator.
 
 
