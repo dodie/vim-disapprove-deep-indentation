@@ -26,7 +26,7 @@ function! g:DisapproveDeepIndent()
     endif
 
     set conceallevel=1 concealcursor=nvic
-    hi conceal ctermfg=red ctermbg=none guifg=red guibg=none
+    hi conceal ctermfg=red ctermbg=NONE guifg=red guibg=NONE
 endfunction
 
 autocmd BufEnter,BufNewFile,BufReadPost * call DisapproveDeepIndent()
