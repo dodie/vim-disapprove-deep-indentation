@@ -25,6 +25,7 @@ You can easily install this Plugin with
 [Pathogen](https://github.com/tpope/vim-pathogen) or
 [Vundle](https://github.com/gmarik/vundle).
 
+Vim needs to be compiled with +conceal for the face to appear.
 
 ##Inspiration
 The idea came from a comment made by [StripTheFlesh](https://www.reddit.com/user/StripTheFlesh) in
