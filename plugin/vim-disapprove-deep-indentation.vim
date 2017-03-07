@@ -29,4 +29,4 @@ function! g:DisapproveDeepIndent()
     hi conceal ctermfg=red ctermbg=NONE guifg=red guibg=NONE
 endfunction
 
-autocmd BufEnter,BufNewFile,BufReadPost * call DisapproveDeepIndent()
+autocmd BufEnter,BufNewFile,BufReadPost * call g:DisapproveDeepIndent()
