@@ -38,6 +38,34 @@ function! g:DisapproveDeepIndent()
 
             set conceallevel=1 concealcursor=nvic
             hi conceal ctermfg=red ctermbg=NONE guifg=red guibg=NONE
+
+
+	    "
+	    " There can be problems if the existing syntax rules use
+	    " contains=ALL or contains=ALLBUT.
+	    " The ಠ_ಠ shouldn't be applied, except for deeply indented lines,
+	    " but these rules sabotage this goal because they make the
+	    " plugins contained rules match.
+	    "
+	    " Because it affects many common syntax highlight setups
+	    " I decided to put a quick and dirty fix here,
+	    " where we check the current syntax and the presence of a known
+	    " rule that breaks the plugin.
+	    "
+	    " More info:
+	    " https://github.com/dodie/vim-disapprove-deep-indentation/issues/2
+	    "
+
+            " fix for the default SQL syntax
+            if hlexists("sqlFold") && &syntax == "sql"
+                syn region sqlFold start='^\s*\zs\c\(Create\|Update\|Alter\|Select\|Insert\)' end=';$\|^$' transparent fold contains=ALLBUT,LookOfDisapprovalLeftEye,LookOfDisapprovalRightEye,LookOfDisapprovalMouth,LookOfDisapprovalPadding
+            endif
+
+	    " fix for the default Ruby syntax
+            if hlexists("rubyLocalVariableOrMethod") && &syntax == "ruby"
+		syn cluster rubyNotTop add=LookOfDisapprovalLeftEye,LookOfDisapprovalRightEye,LookOfDisapprovalMouth,LookOfDisapprovalPadding
+            endif
+
         endif
     endif
 endfunction
