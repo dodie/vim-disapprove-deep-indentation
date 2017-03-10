@@ -15,9 +15,6 @@ let g:LookOfDisapprovalSpaceThreshold=(&tabstop*5)
 
 ![Disapproval in action](https://github.com/dodie/vim-disapprove-deep-indentation/blob/master/screenshot.png "Disapproval")
 
-The plugin uses Vim's conceal feature. It does not modify the source code in any way, the disapproving
-look is just a visual indicator.
-
 
 ##Installation
 
@@ -35,3 +32,18 @@ The idea came from a comment made by [StripTheFlesh](https://www.reddit.com/user
 Just use ಠ_ಠ for indents. It will remind you to not use a lot indentation levels.
 ```
 
+## How it works
+
+The plugin uses Vim's conceal feature. It does not modify the source code in any way, the disapproving
+look is just a visual indicator.
+
+Conceal depends on modifying the syntax highlighting rules. For some file types and syntax settings,
+the rules defined in this plugin may conflict with the default rules applied for a filetype, making
+the look of disapproval appear in the beginning of shallowly indented lines as well.
+
+In the case you encounter this issue, feel free to open an issue.
+Until it's fixed, you can disable the plugin for the problematic file types with the following command:
+
+```
+autocmd FileType SOME_FILETYPE let g:LookOfDisapprovalTabThreshold=0 | let g:LookOfDisapprovalSpaceThreshold=0
+```
