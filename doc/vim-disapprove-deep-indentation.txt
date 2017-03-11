@@ -1,0 +1,37 @@
+*vim-disapprove-deep-indentation.txt* Vim plugin to disapprove deeply indented code.
+
+==============================================================================
+INTRODUCTION                               *vim-disapprove-deep-indentation*
+
+The plugin shows ಠ_ಠ at the beginning of each line that is indented too deeply.
+
+==============================================================================
+OPTIONS                                    *options*
+
+By default the plugin shows the look of disapproval for lines indented at
+least five levels deep. This behavior can be customized with the following
+options.
+
+                                           *'g:LookOfDisapprovalTabThreshold'*
+Set this parameter to customize the treshold for tab based indentation.
+>
+    let g:LookOfDisapprovalTabThreshold = 5
+<
+                                           *'g:LookOfDisapprovalSpaceThreshold'*
+Set this parameter to customize the treshold for space based indentation.
+>
+    let g:LookOfDisapprovalSpaceThreshold = (&tabstop*5)
+<
+
+==============================================================================
+CREDITS                                    *credits*
+
+Developed by David Csakvari.
+The idea came from a comment made by StripTheFlesh in this thread on Reddit:
+https://www.reddit.com/r/programming/comments/5jwjfk/python_36_released/dbjoi2a/
+
+Distributed under the MIT license.
+Project's home and Git repository: https://github.com/dodie/vim-disapprove-deep-indentation
+
+------------------------------------------------------------------------------
+ vim:tw=78:ts=8:ft=help:norl:
