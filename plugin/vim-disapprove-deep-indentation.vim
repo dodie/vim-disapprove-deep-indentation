@@ -66,6 +66,12 @@ function! g:DisapproveDeepIndent()
 		syn cluster rubyNotTop add=LookOfDisapprovalLeftEye,LookOfDisapprovalRightEye,LookOfDisapprovalMouth,LookOfDisapprovalPadding
             endif
 
+	    " fix for the default Python syntax
+	    if hlexists("pythonDoctest") && &syntax == "python"
+		syn region pythonDoctest
+		  \ start="^\s*>>>\s" end="^\s*$"
+		  \ contained contains=ALLBUT,pythonDoctest,@Spell,LookOfDisapprovalLeftEye,LookOfDisapprovalRightEye,LookOfDisapprovalMouth,LookOfDisapprovalPadding
+	    endif
         endif
     endif
 endfunction
