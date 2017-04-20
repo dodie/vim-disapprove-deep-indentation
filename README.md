@@ -24,7 +24,7 @@ You can easily install this Plugin with
 
 Vim needs to be compiled with +conceal for the face to appear.
 
-##Inspiration
+## Inspiration
 The idea came from a comment made by [StripTheFlesh](https://www.reddit.com/user/StripTheFlesh) in
 [this](https://www.reddit.com/r/programming/comments/5jwjfk/python_36_released/dbjoi2a/) thread on Reddit:
 
