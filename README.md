@@ -6,7 +6,7 @@ This Vim plugin disapproves deeply indented code.
 ![Disapproval in action](https://github.com/dodie/vim-disapprove-deep-indentation/blob/master/tty.gif "Disapproval")
 
 By default, it shows ```ಠ_ಠ``` at the beginning of each line that is indented at least 5 levels.
-It can be configured by with the following variables (setting them to 0 disables the feature):
+It can be configured with the following variables (setting them to 0 disables the feature):
 
 ```
 let g:LookOfDisapprovalTabThreshold=5
@@ -16,7 +16,7 @@ let g:LookOfDisapprovalSpaceThreshold=(&tabstop*5)
 ![Disapproval in action](https://github.com/dodie/vim-disapprove-deep-indentation/blob/master/screenshot.png "Disapproval")
 
 
-##Installation
+## Installation
 
 You can easily install this Plugin with
 [Pathogen](https://github.com/tpope/vim-pathogen) or
