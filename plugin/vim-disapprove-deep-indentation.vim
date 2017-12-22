@@ -3,28 +3,30 @@
 " URL:                  https://github.com/dodie/vim-disapprove-deep-indentation
 " License:              MIT
 " ----------------------------------------------------------------------------
+scriptencoding utf-8
+
 function! g:DisapproveDeepIndent()
     if !&modifiable
         return
     endif
 
-    syn clear LookOfDisapproval
+    silent! syn clear LookOfDisapproval
     unlet! g:LookOfDisapprovalSpaceThreshold
     unlet! g:LookOfDisapprovalTabThreshold
 
     " Backward compatible fix for a typo in the API.
-    if !exists("g:LookOfDisapprovalSpaceThreshold") && exists("g:LookOfDisapprovalSpaceTreshold")
+    if !exists('g:LookOfDisapprovalSpaceThreshold') && exists('g:LookOfDisapprovalSpaceTreshold')
         let g:LookOfDisapprovalSpaceThreshold=g:LookOfDisapprovalSpaceTreshold
     endif
-    if !exists("g:LookOfDisapprovalTabThreshold") && exists("g:LookOfDisapprovalTabTreshold")
+    if !exists('g:LookOfDisapprovalTabThreshold') && exists('g:LookOfDisapprovalTabTreshold')
         let g:LookOfDisapprovalTabThreshold=g:LookOfDisapprovalTabTreshold
     endif
 
     " Setting the defaults.
-    if !exists("g:LookOfDisapprovalSpaceThreshold") || (g:LookOfDisapprovalSpaceThreshold > 0 && g:LookOfDisapprovalSpaceThreshold < 5)
+    if !exists('g:LookOfDisapprovalSpaceThreshold') || (g:LookOfDisapprovalSpaceThreshold > 0 && g:LookOfDisapprovalSpaceThreshold < 5)
         let g:LookOfDisapprovalSpaceThreshold=(&tabstop*5)
     endif
-    if !exists("g:LookOfDisapprovalTabThreshold") || (g:LookOfDisapprovalTabThreshold > 0 && g:LookOfDisapprovalTabThreshold < 5)
+    if !exists('g:LookOfDisapprovalTabThreshold') || (g:LookOfDisapprovalTabThreshold > 0 && g:LookOfDisapprovalTabThreshold < 5)
         let g:LookOfDisapprovalTabThreshold=5
     endif
 
@@ -67,17 +69,17 @@ function! g:DisapproveDeepIndent()
     "
 
     " fix for the default SQL syntax
-    if hlexists("sqlFold") && &syntax == "sql"
+    if hlexists('sqlFold') && &syntax ==# 'sql'
         syn region sqlFold start='^\s*\zs\c\(Create\|Update\|Alter\|Select\|Insert\)' end=';$\|^$' transparent fold contains=ALLBUT,LookOfDisapprovalLeftEye,LookOfDisapprovalRightEye,LookOfDisapprovalMouth,LookOfDisapprovalPadding
     endif
 
     " fix for the default Ruby syntax
-    if hlexists("rubyLocalVariableOrMethod") && &syntax == "ruby"
+    if hlexists('rubyLocalVariableOrMethod') && &syntax ==# 'ruby'
         syn cluster rubyNotTop add=LookOfDisapprovalLeftEye,LookOfDisapprovalRightEye,LookOfDisapprovalMouth,LookOfDisapprovalPadding
     endif
 
     " fix for the default Python syntax
-    if hlexists("pythonDoctest") && &syntax == "python"
+    if hlexists('pythonDoctest') && &syntax ==# 'python'
         syn region pythonDoctest
           \ start="^\s*>>>\s" end="^\s*$"
           \ contained contains=ALLBUT,pythonDoctest,@Spell,LookOfDisapprovalLeftEye,LookOfDisapprovalRightEye,LookOfDisapprovalMouth,LookOfDisapprovalPadding
