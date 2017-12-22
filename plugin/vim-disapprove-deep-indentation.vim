@@ -11,8 +11,6 @@ function! g:DisapproveDeepIndent()
     endif
 
     silent! syn clear LookOfDisapproval
-    unlet! g:LookOfDisapprovalSpaceThreshold
-    unlet! g:LookOfDisapprovalTabThreshold
 
     " Backward compatible fix for a typo in the API.
     if !exists('g:LookOfDisapprovalSpaceThreshold') && exists('g:LookOfDisapprovalSpaceTreshold')
@@ -24,14 +22,18 @@ function! g:DisapproveDeepIndent()
 
     " Setting the defaults.
     if !exists('g:LookOfDisapprovalSpaceThreshold') || (g:LookOfDisapprovalSpaceThreshold > 0 && g:LookOfDisapprovalSpaceThreshold < 5)
-        let g:LookOfDisapprovalSpaceThreshold=(&tabstop*5)
+        let l:SpaceThreshold=(&tabstop*5)
+    else
+        let l:SpaceThreshold=g:LookOfDisapprovalSpaceThreshold
     endif
     if !exists('g:LookOfDisapprovalTabThreshold') || (g:LookOfDisapprovalTabThreshold > 0 && g:LookOfDisapprovalTabThreshold < 5)
-        let g:LookOfDisapprovalTabThreshold=5
+        let l:TabThreshold=5
+    else
+        let l:TabThreshold=g:LookOfDisapprovalTabThreshold
     endif
 
     " If the plugin is not disabled, then place the look of disapproval for deeply indented lines.
-    if g:LookOfDisapprovalTabThreshold <= 0 && g:LookOfDisapprovalSpaceThreshold <= 0
+    if l:TabThreshold <= 0 && l:SpaceThreshold <= 0
         return
     endif
 
@@ -40,12 +42,12 @@ function! g:DisapproveDeepIndent()
     syn match LookOfDisapprovalRightEye contained '\%3c\s' conceal cchar=ಠ
     syn match LookOfDisapprovalPadding contained '\%4c\s' conceal cchar= 
 
-    if g:LookOfDisapprovalSpaceThreshold > 0
-        execute 'syn match LookOfDisapproval /^\s\s\s\s\{'.(g:LookOfDisapprovalSpaceThreshold-3).'\}/ contains=LookOfDisapprovalLeftEye,LookOfDisapprovalMouth,LookOfDisapprovalRightEye,LookOfDisapprovalPadding'
+    if l:SpaceThreshold > 0
+        execute 'syn match LookOfDisapproval /^\s\s\s\s\{'.(l:SpaceThreshold-3).'\}/ contains=LookOfDisapprovalLeftEye,LookOfDisapprovalMouth,LookOfDisapprovalRightEye,LookOfDisapprovalPadding'
     endif
 
-    if g:LookOfDisapprovalTabThreshold > 0
-        execute 'syn match LookOfDisapproval /^\t\t\t\{'.(g:LookOfDisapprovalTabThreshold-2).'\}/ contains=LookOfDisapprovalLeftEye,LookOfDisapprovalMouth,LookOfDisapprovalRightEye,LookOfDisapprovalPadding'
+    if l:TabThreshold > 0
+        execute 'syn match LookOfDisapproval /^\t\t\t\{'.(l:TabThreshold-2).'\}/ contains=LookOfDisapprovalLeftEye,LookOfDisapprovalMouth,LookOfDisapprovalRightEye,LookOfDisapprovalPadding'
     endif
 
     set conceallevel=1 concealcursor=nvic
