@@ -86,6 +86,11 @@ function! g:DisapproveDeepIndent()
           \ start="^\s*>>>\s" end="^\s*$"
           \ contained contains=ALLBUT,pythonDoctest,@Spell,LookOfDisapprovalLeftEye,LookOfDisapprovalRightEye,LookOfDisapprovalMouth,LookOfDisapprovalPadding
     endif
+
+    " fix for the default CMake syntax
+    if hlexists('cmakeArguments') && &syntax ==# 'cmake'
+        syn region cmakeArguments start="(" end=")" contains=ALLBUT,cmakeCommand,cmakeCommandConditional,cmakeCommandRepeat,cmakeCommandDeprecated,cmakeArguments,cmakeTodo,LookOfDisapprovalLeftEye,LookOfDisapprovalRightEye,LookOfDisapprovalMouth,LookOfDisapprovalPadding
+    endif
 endfunction
 
 autocmd BufEnter,BufNewFile,BufReadPost * call g:DisapproveDeepIndent()
