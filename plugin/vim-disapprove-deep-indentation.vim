@@ -43,11 +43,11 @@ function! g:DisapproveDeepIndent()
     syn match LookOfDisapprovalPadding contained '\%4c\s' conceal cchar= 
 
     if l:SpaceThreshold > 0
-        execute 'syn match LookOfDisapproval /^\s\s\s\s\{'.(l:SpaceThreshold-3).'\}/ contains=LookOfDisapprovalLeftEye,LookOfDisapprovalMouth,LookOfDisapprovalRightEye,LookOfDisapprovalPadding'
+        execute 'syn match LookOfDisapproval /^\zs\s\s\s\ze\s\{'.(l:SpaceThreshold-3).'\}/ contains=LookOfDisapprovalLeftEye,LookOfDisapprovalMouth,LookOfDisapprovalRightEye,LookOfDisapprovalPadding'
     endif
 
     if l:TabThreshold > 0
-        execute 'syn match LookOfDisapproval /^\t\t\t\{'.(l:TabThreshold-2).'\}/ contains=LookOfDisapprovalLeftEye,LookOfDisapprovalMouth,LookOfDisapprovalRightEye,LookOfDisapprovalPadding'
+        execute 'syn match LookOfDisapproval /^\zs\t\t\t\ze\t\{'.(l:TabThreshold-3).'\}/ contains=LookOfDisapprovalLeftEye,LookOfDisapprovalMouth,LookOfDisapprovalRightEye,LookOfDisapprovalPadding'
     endif
 
     set conceallevel=1 concealcursor=nvic
