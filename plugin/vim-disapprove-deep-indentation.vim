@@ -51,8 +51,9 @@ function! g:DisapproveDeepIndent()
     endif
 
     set conceallevel=1 concealcursor=nvic
-    hi conceal ctermfg=red ctermbg=NONE guifg=red guibg=NONE
-
+    if !exists('g:LookOfDisapprovalNoStyle') || g:LookOfDisapprovalNoStyle == 0
+        hi conceal ctermfg=red ctermbg=NONE guifg=red guibg=NONE
+    endif
 
     "
     " There can be problems if the existing syntax rules use
