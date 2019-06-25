@@ -37,6 +37,15 @@ Just use ಠ_ಠ for indents. It will remind you to not use a lot indentation le
 The plugin uses Vim's conceal feature. It does not modify the source code in any way, the disapproving
 look is just a visual indicator.
 
+Styles for all concealed characters in Vim can be set with a single style rule. This plugin makes them
+red in order to have a really disapproving look for the eye. If you are using this plugin in conjunction
+with other plugins that rely on conceal feature (for example, [indentLine](https://github.com/Yggdroot/indentLine)),
+you might want to disable this styling:
+
+```
+let g:LookOfDisapprovalNoStyle=1
+```
+
 Conceal depends on modifying the syntax highlighting rules. For some file types and syntax settings,
 the rules defined in this plugin may conflict with the default rules applied for a filetype, making
 the look of disapproval appear in the beginning of shallowly indented lines as well.
